@@ -1,0 +1,268 @@
+<OPEN WIRE DIAGRAM VERSION 1/>
+<UNIT Unit1>
+  <COMPONENT Arduino>
+    <X 896/>
+    <INSTANCE object Arduino: TArduinoBoard
+  Modules.Items = <
+    item
+      _ = TArduinoESP8266WiFiModule
+    end
+    item
+      _ = TArduinoEEPROMModule
+    end\>
+  BoardType = 'NodeMCU ESP-12'
+  AnalogInputReference = Default
+  Serial.Items = <
+    item
+      _ = TArduinoESP8266HardwareSerial
+      InputPin.Form = __OpenWireRootUnit__
+      InputPin.SourcePins = (
+        __OpenWireRootUnit__.FormattedText.OutputPin)
+    end
+    item
+      _ = TArduinoESP8266HardwareSerial
+    end
+    item
+      _ = TArduinoESP8266HardwareSerial
+    end\>
+  AnalogInput.Items = <
+    item
+      _ = TArduinoESP8266AnalogInputChannel
+    end\>
+  Digital.Items = <
+    item
+      _ = TArduinoBasicDigitalPWMChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMI2C0InterruptChannel
+      OutputPin.Form = __OpenWireRootUnit__
+      OutputPin.SinkPins = (
+        __OpenWireRootUnit__.Inverter.InputPin)
+    end
+    item
+      _ = TArduinoBasicDigitalPWMI2C0InterruptChannel
+      OutputPin.Form = __OpenWireRootUnit__
+      OutputPin.SinkPins = (
+        (
+          __OpenWireRootUnit__.RotaryEncoderSensor.AInputPin
+          '__OpenWireRootUnit__.RotaryEncoderSensor.Clock(A)'))
+    end
+    item
+      _ = TArduinoBasicDigitalPWMInterruptChannel
+      OutputPin.Form = __OpenWireRootUnit__
+      OutputPin.SinkPins = (
+        (
+          __OpenWireRootUnit__.RotaryEncoderSensor.BInputPin
+          '__OpenWireRootUnit__.RotaryEncoderSensor.Direction(B)'))
+    end
+    item
+      _ = TArduinoBasicDigitalPWMSerial1InterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMSPI0InterruptChannel
+      DigitalInputPin.Form = __OpenWireRootUnit__
+      DigitalInputPin.SourcePin = __OpenWireRootUnit__.Direction.OutputPin
+    end
+    item
+      _ = TArduinoBasicDigitalPWMSPI0InterruptChannel
+      DigitalInputPin.Form = __OpenWireRootUnit__
+      DigitalInputPin.SourcePin = __OpenWireRootUnit__.PulseGenerator.OutputPin
+    end
+    item
+      _ = TArduinoBasicDigitalPWMSerial2SPI0InterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMSerial2InterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMSerial0InterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMSerial0InterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMInterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMInterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMInterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMInterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMInterruptChannel
+    end\>
+end
+/>
+    <Y 256/>
+  </COMPONENT>
+  <COMPONENT RotaryEncoderSensor>
+    <X 368/>
+    <INSTANCE object RotaryEncoderSensor: TArduinoRotaryEncoderSensor
+  AInputPin.Form = __OpenWireRootUnit__
+  AInputPin.SourcePin = (
+    __OpenWireRootUnit__.Arduino.Digital._Item2.OutputPin
+    
+      '__OpenWireRootUnit__.Arduino.Digital.Digital(I2C-SDA)[ 2 ].Outpu' +
+      'tPin')
+  BInputPin.Form = __OpenWireRootUnit__
+  BInputPin.SourcePin = (
+    __OpenWireRootUnit__.Arduino.Digital._Item3.OutputPin
+    '__OpenWireRootUnit__.Arduino.Digital.Digital[ 3 ].OutputPin')
+  UpOutputPin.Form = __OpenWireRootUnit__
+  UpOutputPin.SinkPins = (
+    __OpenWireRootUnit__.UpDownCounter.UpInputPin)
+  DownOutputPin.Form = __OpenWireRootUnit__
+  DownOutputPin.SinkPins = (
+    __OpenWireRootUnit__.UpDownCounter.DownInputPin)
+end
+/>
+    <Y 496/>
+  </COMPONENT>
+  <COMPONENT UpDownCounter>
+    <X 608/>
+    <INSTANCE object UpDownCounter: TArduinoUpDownCounter
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    __OpenWireRootUnit__.Direction.InputPin
+    (
+      __OpenWireRootUnit__.FormattedText.Elements._Item0.InputPin
+      '__OpenWireRootUnit__.FormattedText.Elements.StepSpeed.InputPin')
+    __OpenWireRootUnit__.Abs.InputPin)
+  ResetInputPin.Form = __OpenWireRootUnit__
+  ResetInputPin.SourcePins = (
+    __OpenWireRootUnit__.Inverter.OutputPin)
+  Min.Value = -1000
+  Min.RollOver = False
+  Max.Value = 1000
+  Max.RollOver = False
+  UpInputPin.Form = __OpenWireRootUnit__
+  UpInputPin.SourcePins = (
+    __OpenWireRootUnit__.RotaryEncoderSensor.UpOutputPin)
+  DownInputPin.Form = __OpenWireRootUnit__
+  DownInputPin.SourcePins = (
+    __OpenWireRootUnit__.RotaryEncoderSensor.DownOutputPin)
+end
+/>
+    <Y 480/>
+  </COMPONENT>
+  <COMPONENT PulseGenerator>
+    <X 608/>
+    <INSTANCE object PulseGenerator: TArduinoPulseGenerator
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.Arduino.Digital._Item6.DigitalInputPin
+      
+        '__OpenWireRootUnit__.Arduino.Digital.Digital(SPI-MISO)[ 6 ].Digi' +
+        'talInputPin'))
+  Frequency = 0.000000000000000000
+  Frequency = 0.000000000000000000
+end
+/>
+    <Y 640/>
+  </COMPONENT>
+  <COMPONENT Direction>
+    <X 608/>
+    <INSTANCE object Direction: TArduinoIntegerCompareValue
+  InputPin.Form = __OpenWireRootUnit__
+  InputPin.SourcePin = __OpenWireRootUnit__.UpDownCounter.OutputPin
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.Arduino.Digital._Item5.DigitalInputPin
+      
+        '__OpenWireRootUnit__.Arduino.Digital.Digital(SPI-SCK)[ 5 ].Digit' +
+        'alInputPin')
+    (
+      __OpenWireRootUnit__.FormattedText.Elements._Item1.InputPin
+      '__OpenWireRootUnit__.FormattedText.Elements.Direction.InputPin'))
+  CompareType = ctSmaller
+end
+/>
+    <Y 720/>
+  </COMPONENT>
+  <COMPONENT FormattedText>
+    <X 544/>
+    <INSTANCE object FormattedText: TArduinoFormattedText
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.Arduino.Serial._Item0.InputPin
+      '__OpenWireRootUnit__.Arduino.Serial[0].InputPin'))
+  Text = 'StepSpeed: %0  Direction: %1'
+  Elements.Items = <
+    item
+      _ = TArduinoFormattedTextElementInteger
+      Name = 'StepSpeed'
+      InputPin.Form = __OpenWireRootUnit__
+      InputPin.SourcePin = __OpenWireRootUnit__.UpDownCounter.OutputPin
+    end
+    item
+      _ = TArduinoFormattedTextElementDigital
+      Name = 'Direction'
+      InputPin.Form = __OpenWireRootUnit__
+      InputPin.SourcePin = __OpenWireRootUnit__.Direction.OutputPin
+      InitialValue = False
+    end\>
+end
+/>
+    <Y 816/>
+  </COMPONENT>
+  <COMPONENT Abs>
+    <X 256/>
+    <INSTANCE object Abs: TArduinoIntegerAbs
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    __OpenWireRootUnit__.MultiplyBy10.InputPin)
+  InputPin.Form = __OpenWireRootUnit__
+  InputPin.SourcePin = __OpenWireRootUnit__.UpDownCounter.OutputPin
+end
+/>
+    <Y 640/>
+  </COMPONENT>
+  <COMPONENT Inverter>
+    <X 448/>
+    <INSTANCE object Inverter: TArduinoBooleanInverter
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    __OpenWireRootUnit__.UpDownCounter.ResetInputPin)
+  InputPin.Form = __OpenWireRootUnit__
+  InputPin.SourcePin = (
+    __OpenWireRootUnit__.Arduino.Digital._Item1.OutputPin
+    
+      '__OpenWireRootUnit__.Arduino.Digital.Digital(I2C-SCL)[ 1 ].Outpu' +
+      'tPin')
+end
+/>
+    <Y 416/>
+  </COMPONENT>
+  <COMPONENT MultiplyBy10>
+    <X 368/>
+    <INSTANCE object MultiplyBy10: TArduinoIntegerMultiplyByValue
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.PulseGenerator.FrequencyInputPin
+      '__OpenWireRootUnit__.PulseGenerator.Frequency'))
+  InputPin.Form = __OpenWireRootUnit__
+  InputPin.SourcePin = __OpenWireRootUnit__.Abs.OutputPin
+  Value = 10
+end
+/>
+    <Y 640/>
+  </COMPONENT>
+    <BINDINGS object TOWPinBindingManager
+  Bindings = (
+    PulseGenerator
+    (
+      Frequency
+      TOWSingleSinkPinBinding
+      'Frequency'
+      __OpenWireRootUnit__.MultiplyBy10.OutputPin))
+end
+/>
+</UNIT>
